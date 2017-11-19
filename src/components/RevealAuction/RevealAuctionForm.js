@@ -4,20 +4,9 @@ import Button from 'material-ui/Button';
 import {validateRevealAuctionBid} from '../../lib/ensService';
 import {TimeDuration} from './TimeDuration';
 import {RevealAuctionConfirmDialog} from './RevealAuctionConfirmDialog';
+import {RevealAuctionJsonDialog} from './RevealAuctionJsonDialog';
 import './RevealAuctionForm.css';
 
-// const EmailTextField = (props) => (
-//   <TextField
-//     id="email"
-//     name="email"
-//     label="Email"
-//     value={props.value}
-//     onChange={props.onChange}
-//     margin="normal"
-//     placeholder="youremail@example.com"
-//     helperText="The bid information will send to this email"
-//   />
-// );
 
 const EthBidTextField = (props) => (
   <TextField
@@ -79,6 +68,19 @@ const ConfirmFormSubmit = (props) => {
   );
 };
 
+const ImportJsonButton = (props) => {
+  return (
+    <div className="RevealAuctionForm-importJson">
+      <Button
+        raised
+        label="ImportJsonDialog"
+        onClick={props.onClick} >
+        Import JSON
+      </Button>
+    </div>
+  )
+}
+
 const FormFields = (props) => (
   <div className="RevealAuctionForm-field">
     {/* <EmailTextField
@@ -120,7 +122,11 @@ export class RevealAuctionForm extends Component {
       secretErrMsg: '',
       gas: '21',
       gasErr: false,
-      gasErrMsg: ''
+      gasErrMsg: '',
+      importDialogOpen: false,
+      revealJson: '',
+      revealJsonErr: false,
+      revealJsonErrMsg: '',
     }
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -130,6 +136,9 @@ export class RevealAuctionForm extends Component {
     this.checkGas = this.checkGas.bind(this);
     this.submitDisabled = this.submitDisabled.bind(this);
     this.inputResult = this.inputResult.bind(this);
+    this.handleImportDialogOpen = this.handleImportDialogOpen.bind(this);
+    this.handleImportDialogClose = this.handleImportDialogClose.bind(this);
+    this.handleParseImportJson = this.handleParseImportJson.bind(this);
   }
 
   handleOpen = () => {
@@ -260,6 +269,38 @@ export class RevealAuctionForm extends Component {
     gas: this.state.gas
   })
 
+  handleImportDialogOpen = () => {
+    this.setState({importDialogOpen: true});
+  }
+
+  handleImportDialogClose = () => {
+    this.setState({importDialogOpen: false});
+  }
+
+  handleParseImportJson = () => {
+    try {
+      const revealJsonObj = JSON.parse(this.state.revealJson);
+      if (revealJsonObj.name !== this.props.searchResult.searchName) {
+        this.setState({revealJsonErr: true, revealJsonErrMsg: "Reveal name not match."});
+        return;
+      }
+      if (revealJsonObj.address !== this.props.address) {
+        this.setState({revealJsonErr: true, revealJsonErrMsg: "Reveal address not match."});
+        return;
+      }
+      this.setState({
+        ethBid: revealJsonObj.value, 
+        secret: revealJsonObj.secret,
+        revealJson: '',
+        revealJsonErr: false,
+        revealJsonErrMsg: '',
+      });
+      this.handleImportDialogClose();
+    } catch (e) {
+      this.setState({revealJsonErr: true, revealJsonErrMsg: "Not a valid JSON format."});
+    }
+  }
+
   render() {
     const domainName = <h2>{this.props.searchResult.searchName}.eth</h2>;
     const timeDuration = <TimeDuration {...this.props} />;
@@ -271,6 +312,18 @@ export class RevealAuctionForm extends Component {
           open={this.state.open}
           handleClose={this.handleClose}
         />;
+
+    const importJsonButton = 
+      <ImportJsonButton onClick={this.handleImportDialogOpen}/>;
+
+    const revealAuctionJsonDialog = this.state.importDialogOpen &&
+      <RevealAuctionJsonDialog
+        {...this.state}
+        handleInputChange={this.handleInputChange}
+        handleParseImportJson={this.handleParseImportJson}
+        handleImportDialogClose={this.handleImportDialogClose}
+      />
+
     const confirmSubmitButton = 
       <ConfirmFormSubmit
         onClick={this.handleOpen}
@@ -286,8 +339,12 @@ export class RevealAuctionForm extends Component {
           {...this.state}
           handleInputChange={this.handleInputChange}
         />
-        {confirmSubmitButton}
+        <div className="RevealAuctionForm-buttons">
+          {importJsonButton}
+          {confirmSubmitButton}
+        </div>
         {revealAuctionConfirmDialog}
+        {revealAuctionJsonDialog}
       </div>
     );
   }

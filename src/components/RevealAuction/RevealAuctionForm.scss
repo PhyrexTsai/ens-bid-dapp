@@ -34,11 +34,15 @@
   }
 }
 
-.RevealAuctionForm-submit {
+.RevealAuctionForm-buttons {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1em;
   margin-top: 2em;
   width: 90vw;
   max-width: $main-width;
+
+  div {
+    margin-left: 1em;
+  }
 }
