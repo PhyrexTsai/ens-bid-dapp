@@ -7,6 +7,14 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import './MyEnsList.css';
 
+/**
+ * TODO 
+ * saga load from server
+ * import from JSON
+ * after import check all ENS status
+ * 
+ */
+
 let id = 0;
 function ensData(name, resolver, address, winningDeed, highestBid ,revealBidsBy, status) {
   id += 1;
@@ -68,6 +76,7 @@ export class MyEnsList extends Component {
               <div className="MyEnsList-Collapse">
               <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
                 <div className="MyEnsList-Collapse-Button">
+                  <Button raised>Set Resolver</Button>
                   <Button raised>Transfer</Button>
                   <Button raised>Set Subdomain</Button>
                 </div>
