@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {MainWrapper} from './MainWrapper/MainWrapper';
+import {MyEnsList} from './MyEnsList/MyEnsList';
 import Warnings from './Warnings';
 import Top from './Top/Top';
 import Footer from './Footer/Footer';
@@ -153,6 +154,8 @@ class App extends Component {
     switch(this.state.menuLabel) {
       case labels.ENS_BID:
         return this.mainWrapperPage();
+      case labels.MY_ENS_LIST:
+        return this.myEnsListPage();
       case labels.FAQ:
         return this.faqPage();
       case labels.DISCLAIMER:
@@ -194,6 +197,10 @@ class App extends Component {
         handleWalletWarningMsg={this.handleWalletWarningMsg}
       />
     : <Warnings/>;
+  }
+
+  myEnsListPage() {
+    return <MyEnsList/>;
   }
 
   render() {

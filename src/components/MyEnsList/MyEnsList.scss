@@ -1,0 +1,43 @@
+@import '../scss/_color.scss';
+@import '../scss/_base.scss';
+
+.MyEnsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1em;
+  margin-top: 6em;
+
+  @include desktop {
+    div {
+      max-width: $main-width;
+    }
+  }
+
+  h1 {
+    color: $accent-color-blue;
+    margin-bottom: 1em;
+    font-weight: $little-light;
+    font-size: $base-font-size * 2;
+
+    @include desktop {
+      font-weight: $bold;
+      font-size: $base-font-size * 3;
+    }
+  }
+  
+  th {
+    font-size: $base-font-size * 1.5;
+    padding: 4px;
+  }
+  
+  td {
+    padding: 4px;
+  }
+}
+
+.MyEnsList-row-action {
+  display: flex;
+  flex-direction: column;
+}

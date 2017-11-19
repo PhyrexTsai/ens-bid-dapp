@@ -17,7 +17,7 @@ import './Top.css';
 
 const menu = [
   {icon: 'home', name: 'ENS.BID', disabled: false, label: labels.ENS_BID},
-  {icon: 'view_list', name: 'My ENS List', disabled: true, label: labels.MY_ENS_LIST},
+  {icon: 'view_list', name: 'My ENS List', disabled: false, label: labels.MY_ENS_LIST},
   {icon: 'gavel', name: 'ENS Trade', disabled: true, label: labels.ENS_TRADE},
   {icon: 'attach_money', name: 'ENS Loan', disabled: true, label: labels.ENS_LOAD},
 ];
