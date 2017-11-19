@@ -13,6 +13,17 @@
   @include desktop {
     width: 100%;
   }
+
+  h2 {
+    color: $primary-color-light;
+    font-size: 1.5em;
+  }
+
+  p {
+    color: $dark-grey;
+    line-height: 1.4;
+    font-size: 0.8em;
+  }
 }
 
 .RevealAuctionJsonDialog-wrapper {

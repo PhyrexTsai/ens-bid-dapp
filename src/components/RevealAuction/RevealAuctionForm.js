@@ -75,7 +75,7 @@ const ImportJsonButton = (props) => {
         raised
         label="ImportJsonDialog"
         onClick={props.onClick} >
-        Import JSON
+        Reveal By JSON
       </Button>
     </div>
   )
@@ -274,7 +274,12 @@ export class RevealAuctionForm extends Component {
   }
 
   handleImportDialogClose = () => {
-    this.setState({importDialogOpen: false});
+    this.setState({
+      importDialogOpen: false,
+      revealJson: '',
+      revealJsonErr: false,
+      revealJsonErrMsg: '',
+    });
   }
 
   handleParseImportJson = () => {
@@ -291,9 +296,6 @@ export class RevealAuctionForm extends Component {
       this.setState({
         ethBid: revealJsonObj.value, 
         secret: revealJsonObj.secret,
-        revealJson: '',
-        revealJsonErr: false,
-        revealJsonErrMsg: '',
       });
       this.handleImportDialogClose();
     } catch (e) {

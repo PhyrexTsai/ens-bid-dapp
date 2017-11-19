@@ -10,6 +10,7 @@ import './RevealAuctionJsonDialog.css';
 
 export const RevealAuctionJsonDialog = (props) => {
   const disabled = (props.revealJson !== '') ? false : true;
+  const contextText = `{"name": "yourbid", "secret": "your secret", "value": "0.01", "address": "0x0000000000000000000000000000000000000000"}`;
 
   return (
     <Dialog
@@ -24,6 +25,9 @@ export const RevealAuctionJsonDialog = (props) => {
       </IconButton>
       <div className="RevealAuctionJsonDialog-wrapper">
         <Card className='RevealAuctionJsonDialog-card'>
+          <h2>Import Reveal Auction JSON</h2>
+          <p>Example:</p>
+          <p>{contextText}</p>
           <TextField
             className="RevealAuctionJsonDialog-formcontrol"
             error={props.revealJsonErr}
@@ -33,7 +37,7 @@ export const RevealAuctionJsonDialog = (props) => {
             value={props.revealJson}
             onChange={props.handleInputChange}
             margin="normal"
-            helperText={props.revealJsonErr ? props.revealJsonErrMsg : 'Ex: {"name": "yourbid", "secret": "your secret", "value": "0.01", "address": ""}'}
+            helperText={props.revealJsonErr ? props.revealJsonErrMsg : ''}
           />
           <div className="RevealAuctionJsonDialog-button-container">
             <Button 
