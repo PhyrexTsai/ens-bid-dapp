@@ -4,7 +4,6 @@ import Card, { CardHeader, CardContent, CardActions } from 'material-ui/Card';
 import Collapse from 'material-ui/transitions/Collapse';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import './MyEnsList.css';
 
 /**
@@ -46,11 +45,24 @@ export class MyEnsList extends Component {
   };
 
   render() {
+    const expendIcon = this.state.expanded ? 
+      <i className="material-icons">expand_less</i> :
+      <i className="material-icons">expand_more</i>;
+
     return (
       <div className="MyEnsList">
-        <h1>My ENS List</h1>
-        <div className="MyEnsList-import">
-          <Button raised>Import JSON</Button>
+        <div className="MyEnsList-Head">
+          <h1>My ENS List</h1>
+          <div className="MyEnsList-Head-Button">
+            <Button raised>
+              <i className="material-icons">file_upload</i>
+              Import
+            </Button>
+            <Button raised>
+              <i className="material-icons">file_download</i>
+              Export
+            </Button>
+          </div>
         </div>
         {data.map(n => {
           return (
@@ -69,7 +81,7 @@ export class MyEnsList extends Component {
                     onClick={this.handleExpandClick}
                     aria-expanded={this.state.expanded}
                     aria-label="More info">
-                    <ExpandMoreIcon />
+                    {expendIcon}
                   </IconButton>
                 </CardActions>
               </div>

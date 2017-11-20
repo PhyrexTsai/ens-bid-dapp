@@ -27,6 +27,19 @@
   }
 }
 
+.MyEnsList-Head {
+  width: 100%;
+  max-width: $main-width;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+  
+  button {
+    margin-left: 1em;
+  }
+}
+
 .MyEnsList-import {
   width: 100%;
   max-width: $main-width;
