@@ -51,8 +51,8 @@ export class MyEnsList extends Component {
 
     return (
       <div className="MyEnsList">
+        <h1>My ENS List</h1>
         <div className="MyEnsList-Head">
-          <h1>My ENS List</h1>
           <div className="MyEnsList-Head-Button">
             <Button raised>
               <i className="material-icons">file_upload</i>
@@ -86,13 +86,18 @@ export class MyEnsList extends Component {
                 </CardActions>
               </div>
               <div className="MyEnsList-Collapse">
-              <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
-                <div className="MyEnsList-Collapse-Button">
-                  <Button raised>Set Resolver</Button>
-                  <Button raised>Transfer</Button>
-                  <Button raised>Set Subdomain</Button>
-                </div>
-              </Collapse>
+                <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
+                  <Typography paragraph align="left">Winning Deed: {n.winningDeed}</Typography>
+                  <Typography paragraph align="left">Highest Bid: {n.highestBid} ETH</Typography>
+                  <Typography paragraph align="left">Resolver: {n.resolver}</Typography>
+                  <Typography paragraph align="left">Owner: {n.address}</Typography>
+                  <Typography paragraph align="left">Reveal Bids By: {n.revealBidsBy}</Typography>
+                  <div className="MyEnsList-Collapse-Button">
+                    <Button raised>Set Resolver</Button>
+                    <Button raised>Transfer</Button>
+                    <Button raised>Set Subdomain</Button>
+                  </div>
+                </Collapse>
               </div>
             </Card>
           )

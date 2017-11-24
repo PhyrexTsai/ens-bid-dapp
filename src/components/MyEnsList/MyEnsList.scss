@@ -31,7 +31,7 @@
   width: 100%;
   max-width: $main-width;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 0.5em;
   
@@ -66,9 +66,11 @@
   span{
     color: $accent-color-blue;
     font-weight: $little-light;
+    font-size: 1rem;
 
     @include desktop {
       font-weight: $bold;
+      font-size: 1.5rem;
     }
   }
 }
@@ -80,16 +82,38 @@
 
 .MyEnsList-Collapse {
   width: 100%;
+
+  p {
+    margin-left: 1em;
+    margin-right: 1em;
+
+    @include mobile {
+      font-size: 8px;
+    }
+  }
 }
 
 .MyEnsList-Collapse-Button {
   width: 100%;
   max-width: $main-width;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 1em;
+  align-items: center;
 
   button {
-    margin-right: 1em;
+    margin-right: 0em;
+    margin-bottom: 0.5em;
+    width: 90%;
+  }
+
+  @include desktop {
+    flex-direction: row;
+
+    button {
+      margin-right: 1em;
+      width: auto;
+    }
   }
 } 
