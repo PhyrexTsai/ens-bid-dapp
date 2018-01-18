@@ -1,0 +1,4 @@
+### Server Health
+GET https://ens-bid-api.herokuapp.com/v1/health
+
+### Domain search

@@ -85,12 +85,14 @@ class App extends Component {
       this.handleSearchClick(e);
     } else {
       this.setState({ searchResult: null });
+      this.props.handleDomainSearchClear();
     }
   }
 
   handleSearchKeyDown(e) {
     if (e.keyCode === 27) {
       this.setState({ searchValue: '', searchResult: null});
+      this.props.handleDomainSearchClear();
     }
   }
  
@@ -106,6 +108,9 @@ class App extends Component {
       this.setState({fetching: true}); //TODO: not work
       const searchResult = entries(this.state.searchValue);
       searchResult.searchName = this.state.searchValue;
+
+      this.props.handleDomainSearch({name: this.state.searchValue});
+
       this.setState({searchResult, searchFetching: false});
     }
   }
@@ -181,6 +186,7 @@ class App extends Component {
     ? <MainWrapper
         className="App-content"
         {...this.state}
+        {...this.props}
         switchPage={this.switchPage}
         handleSearchChange={this.handleSearchChange}
         handleSearchClick={this.handleSearchClick}

@@ -1,14 +1,14 @@
-import {getAddressByEns, entries, startAuctionAndBid, startAuction, newBid, unsealBid, sha3, shaBid, sealedBids} from './ensService';
+import {getRegistrarAddress, getAddressByEns, entries, startAuctionAndBid, startAuction, newBid, unsealBid, sha3, shaBid, sealedBids} from './ensService';
 import {getEstimateGas} from './dAppService';
 const abi = require('ethereumjs-abi');
 
-test('getAddressByEns should not return "ENS not found" if the given .eth exists.', async () => {
+test.skip('getAddressByEns should not return "ENS not found" if the given .eth exists.', async () => {
   const name = 'testing.eth';
   const result = await getAddressByEns(name);
   expect(result).not.toEqual('ENS not found');
 });
 
-test('getAddressByEns should  return a valid address if the given .eth exists.', async () => {
+test.skip('getAddressByEns should  return a valid address if the given .eth exists.', async () => {
   const name = 'testing.eth';
   const result = await getAddressByEns(name);
   // console.log(result)
@@ -17,7 +17,7 @@ test('getAddressByEns should  return a valid address if the given .eth exists.',
 });
 
 test('entries', () => {
-  const name = 'mytesting';
+  const name = 'testing';
   const result = entries(name);
   console.log(name, result);
   expect(result).toEqual(expect.objectContaining({
@@ -53,6 +53,10 @@ test('entries', () => {
 "secretSHA3":"0x5f16f4c7f149ac4f9510d9cf8cf384038ad348b3bcdc01915f95de12df9d1b02"}
 */
 
+test('getRegistrarAddress', () => {
+  console.log(getRegistrarAddress());
+});
+
 test.skip('sha3', () => {
   const name = "mytesting";
   const nameSHA3 = sha3(name);
@@ -65,7 +69,7 @@ test.skip('sha3', () => {
   expect(secretSHA3).toEqual("0x5f16f4c7f149ac4f9510d9cf8cf384038ad348b3bcdc01915f95de12df9d1b02");
 });
 
-test('startAuctionAndBid estimateGas', () => {
+test.skip('startAuctionAndBid estimateGas', () => {
   const name = 'ethmasks';
   const result = getEstimateGas(startAuctionAndBid(name, 0.01, 0.02, 'testing', process.env.PRIVATE_KEY, 21));
   console.log("startAuctionAndBid, estimateGas", result);
@@ -77,7 +81,7 @@ test.skip('startAuction', () => {
   console.log("startAuction, txHash", result);
 });
 
-test('newBid estimateGas', () => {
+test.skip('newBid estimateGas', () => {
   const name = "ethmask";
   const result = getEstimateGas(newBid(name, 0.02, 0.05, "testing", process.env.PRIVATE_KEY, 21));
   console.log("newBid, estimateGas", result);
@@ -89,7 +93,7 @@ test.skip('unsealBid', () => {
   console.log("unsealBid, txHash", result);
 });
 
-test('sealedBids', () => {
+test.skip('sealedBids', () => {
   const name = "testabc";
   const secret = "testing";
   const result = sealedBids(sha3(name), 10000000000000000, sha3(secret), process.env.PRIVATE_KEY, 21);

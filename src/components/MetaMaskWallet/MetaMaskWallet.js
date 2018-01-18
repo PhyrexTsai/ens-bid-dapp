@@ -40,7 +40,7 @@ export class MetaMaskWallet extends Component {
 
     web3.version.getNetwork((err, netId) => {
       if (err) {
-        this.setState({networkId: null, yarmessage: messages.NETWORK_ERROR});
+        this.setState({networkId: null, message: messages.NETWORK_ERROR});
       } else {
         this.setState({ networkId: netId })
       }

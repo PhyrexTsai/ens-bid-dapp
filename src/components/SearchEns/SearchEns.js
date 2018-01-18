@@ -65,5 +65,8 @@ export const SearchEns = (props) => (
       handleSearchKeyDown={props.handleSearchKeyDown}
     />
     {props.searchResult && <SearchResult {...props} />}
+    {props.domainSearch.length > 0 && props.domainSearch.map((data, index) => (
+      <SearchResult searchResult={data} key={`searchResult-${index}`} />
+    ))}
   </div>
 );

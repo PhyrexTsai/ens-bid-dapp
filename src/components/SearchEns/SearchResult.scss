@@ -2,7 +2,7 @@
 @import '../scss/_base.scss';
 
 .SearchResult {
-  margin-top: 1em;
+  margin-top: 0em;
   padding: 1em;
   width: 100%;
 }
@@ -13,11 +13,11 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 3em 0;
+  padding: 1em 0;
   
   @include desktop {
     flex-direction: row;
-    padding: 5em 0;
+    padding: 1em 0;
   }
 }
 

@@ -4,9 +4,15 @@ import {
   addAction,
   subAction
 } from '../actions/counterActions';
+import { 
+  domainSearchAction, 
+  domainSearchClearAction 
+} from '../actions/domainSearchActions';
 
 const  mapStateToProps = (state) => ({
-  count: state.count
+  count: state.count,
+  isFetching: state.isFetching,
+  domainSearch: state.domainSearch
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -16,6 +22,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSub: (num) => {
       dispatch(subAction(num));
+    },
+    handleDomainSearch: (payload) => {
+      dispatch(domainSearchAction(payload));
+    },
+    handleDomainSearchClear: () => {
+      dispatch(domainSearchClearAction());
     }
   }
 };

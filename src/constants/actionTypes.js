@@ -1,2 +1,12 @@
 export const ADD = 'ADD';
 export const SUB = 'SUB';
+
+export const DOMAIN_SEARCH = 'DOMAIN_SEARCH';
+export const DOMAIN_SEARCH_SUCCESS = 'DOMAIN_SEARCH_SUCCESS';
+export const DOMAIN_SEARCH_ERROR = 'DOMAIN_SEARCH_ERROR';
+export const DOMAIN_SEARCH_CLEAR = 'DOMAIN_SEARCH_CLEAR';
+
+export const FETCHING = 'FETCHING';
+export const FETCH_COMPLETE = 'FETCH_COMPLETE';
+
+export const SYSTEM_ERROR = 'SYSTEM_ERROR';
