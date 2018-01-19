@@ -105,12 +105,10 @@ class App extends Component {
     }
 
     if (this.state.searchValue) {
-      this.setState({fetching: true}); //TODO: not work
+      //this.setState({fetching: true}); //TODO: not work
+      this.props.handleDomainSearch({name: this.state.searchValue});
       const searchResult = entries(this.state.searchValue);
       searchResult.searchName = this.state.searchValue;
-
-      this.props.handleDomainSearch({name: this.state.searchValue});
-
       this.setState({searchResult, searchFetching: false});
     }
   }

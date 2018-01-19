@@ -3,6 +3,7 @@ import {SearchResult} from './SearchResult';
 import Paper from 'material-ui/Paper';
 import Input from 'material-ui/Input';
 import IconButton from 'material-ui/IconButton';
+import { CircularProgress } from 'material-ui/Progress';
 import './SearchEns.css';
 
 const SearchDescription = () => (
@@ -64,6 +65,7 @@ export const SearchEns = (props) => (
       handleSearchKeyPress={props.handleSearchKeyPress}
       handleSearchKeyDown={props.handleSearchKeyDown}
     />
+    {props.isFetching && <div className="SearchEns-progress"><CircularProgress/></div>}
     {props.searchResult && <SearchResult {...props} />}
     {props.domainSearch.length > 0 && props.domainSearch.map((data, index) => (
       <SearchResult searchResult={data} key={`searchResult-${index}`} />
