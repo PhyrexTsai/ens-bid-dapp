@@ -128,6 +128,7 @@ export class SearchResult extends Component {
       <div className="SearchResult">
         <Paper className="SearchResult-paper">
           <div className="SearchResult-paper-eth">
+            {this.props.recommend && <span className="recommend">RECOMMEND</span>}
             <h2>{this.props.searchResult.searchName}.eth</h2>
           </div>
           {statusAndAction}

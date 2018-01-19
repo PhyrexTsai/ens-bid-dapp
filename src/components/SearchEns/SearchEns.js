@@ -66,9 +66,9 @@ export const SearchEns = (props) => (
       handleSearchKeyDown={props.handleSearchKeyDown}
     />
     {props.isFetching && <div className="SearchEns-progress"><CircularProgress/></div>}
-    {props.searchResult && <SearchResult {...props} />}
+    {props.searchResult && <SearchResult {...props} recommend={false} />}
     {props.domainSearch.length > 0 && props.domainSearch.map((data, index) => (
-      <SearchResult searchResult={data} key={`searchResult-${index}`} />
+      <SearchResult searchResult={data} recommend={true} key={`searchResult-${index}`} />
     ))}
   </div>
 );
