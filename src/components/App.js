@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   handleSearchChange(e) {
-    this.setState({searchValue: e.target.value});
+    this.setState({searchValue: e.target.value.toLowerCase()});
   }
 
   handleSearchKeyPress(e) {
