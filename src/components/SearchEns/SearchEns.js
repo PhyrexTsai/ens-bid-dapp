@@ -8,7 +8,7 @@ import './SearchEns.css';
 
 const SearchDescription = () => (
   <div className="SearchDescription">
-    <h1>Your Identity on Ethereum</h1>
+    <h1>Start participate blockchain technology today</h1>
   </div>
 );
 

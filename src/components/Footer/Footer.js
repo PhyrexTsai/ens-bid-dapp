@@ -11,7 +11,7 @@ class Footer extends Component {
           <a>Privacy</a>
         </div> */}
         <div className="Footer-copyright">
-          <p>© Copyright 2017 ENS.BID</p>
+          <p>© Copyright 2018 Portal Network</p>
         </div>
       </div>
     )

@@ -16,17 +16,16 @@ import * as labels from '../../constants/menu';
 import './Top.css';
 
 const menu = [
-  {icon: 'home', name: 'ENS.BID', disabled: false, label: labels.ENS_BID},
-  {icon: 'view_list', name: 'My ENS List', disabled: true, label: labels.MY_ENS_LIST},
-  {icon: 'gavel', name: 'ENS Trade', disabled: true, label: labels.ENS_TRADE},
-  {icon: 'attach_money', name: 'ENS Loan', disabled: true, label: labels.ENS_LOAD},
+  {icon: 'home', name: 'Portal Network', disabled: false, label: labels.ENS_BID},
+  {icon: 'view_list', name: 'My Domain List', disabled: true, label: labels.MY_ENS_LIST},
+  {icon: 'gavel', name: 'Domain Trade', disabled: true, label: labels.ENS_TRADE},
+  {icon: 'attach_money', name: 'Domain Loan', disabled: true, label: labels.ENS_LOAD},
 ];
 
 const info = [
   {icon: 'help_outline', name: 'FAQ', disabled: false, label: labels.FAQ},
   {icon: 'assignment', name: 'Disclaimer', disabled: false, label: labels.DISCLAIMER},
-  {icon: 'bug_report', name: 'Bug Report', disabled: false, label: labels.BUG_REPORT},
-  {icon: 'settings', name: 'ENS Settings', disabled: true, label: labels.SETTINGS},
+  {icon: 'settings', name: 'Domain Settings', disabled: true, label: labels.SETTINGS},
 ]
 
 const MenuItem = (props) => (

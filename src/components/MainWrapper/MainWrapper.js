@@ -13,7 +13,7 @@ const Main = (props) => (
   <div className="Main">
     <div>
       <SearchEns {...props} />
-      <About />
+      {/*<About />*/}
     </div>
   </div>
 );
