@@ -22,6 +22,7 @@ class App extends Component {
       page: 'main',
       keystore: '',
       privateKey: '',
+      tld: '.eth',
       
       // for handling search
       searchValue: '',
@@ -53,6 +54,8 @@ class App extends Component {
     this.handleWalletWarningMsg = this.handleWalletWarningMsg.bind(this);
     this.backToSearch = this.backToSearch.bind(this);
 
+    this.handleTLDChange = this.handleTLDChange.bind(this);
+
     // unlock wallet
     this.handleOpenWallet = this.handleOpenWallet.bind(this);
     this.handleCloseWallet = this.handleCloseWallet.bind(this);
@@ -80,6 +83,10 @@ class App extends Component {
     this.setState({searchValue: e.target.value.toLowerCase()});
   }
 
+  handleTLDChange(e) {
+    this.setState({ tld: e.target.value });
+  }
+
   handleSearchKeyPress(e) {
     if (e.key === 'Enter') {
       this.handleSearchClick(e);
@@ -100,7 +107,7 @@ class App extends Component {
     e.preventDefault();
 
     if ((this.state.searchValue).length < 7) {
-      this.handleMessageOpen('ENS .eth should greater than 7 words');
+      this.handleMessageOpen('Search name should greater than 7 words');
       return;
     }
 
@@ -196,6 +203,7 @@ class App extends Component {
         handleOpenWallet={this.handleOpenWallet}
         handleCloseWallet={this.handleCloseWallet}
         handleWalletWarningMsg={this.handleWalletWarningMsg}
+        handleTLDChange={this.handleTLDChange}
       />
     : <Warnings/>;
   }

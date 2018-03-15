@@ -3,6 +3,8 @@ import {SearchResult} from './SearchResult';
 import Paper from 'material-ui/Paper';
 import Input from 'material-ui/Input';
 import IconButton from 'material-ui/IconButton';
+import Select from 'material-ui/Select';
+import { MenuItem } from 'material-ui/Menu';
 import { CircularProgress } from 'material-ui/Progress';
 import './SearchEns.css';
 
@@ -29,7 +31,6 @@ const SearchInput = (props) => {
 
   const ethTipName = 
     <div className="SearchEns-ethTipName">
-      <p>.eth</p>
     </div>;
   
   const searchButton = 
@@ -66,7 +67,9 @@ export const SearchEns = (props) => (
       handleSearchKeyDown={props.handleSearchKeyDown}
     />
     {props.isFetching && <div className="SearchEns-progress"><CircularProgress/></div>}
-    {props.searchResult && <SearchResult {...props} recommend={false} />}
+    {props.searchResult && <SearchResult {...props} recommend={false} TLD=".eth" />}
+    {props.searchResult && <SearchResult {...props} recommend={false} TLD=".etc" />}
+    {props.searchResult && <SearchResult {...props} recommend={false} TLD=".qtum" />}
     {props.domainSearch.length > 0 && props.domainSearch.map((data, index) => (
       <SearchResult searchResult={data} recommend={true} key={`searchResult-${index}`} />
     ))}

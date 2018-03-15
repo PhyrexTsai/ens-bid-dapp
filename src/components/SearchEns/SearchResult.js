@@ -41,19 +41,23 @@ export class SearchResult extends Component {
   }
 
   getCurrentStep() {
-    const ownedByCurrentUser = 
-      this.props.address &&
-      (this.state.currentSearchName !== this.state.prevSearchName) &&
-      checkCurrentUserOwned(
-        this.props.searchResult.searchName,
-        this.props.address
+    if (this.props.TLD === '.eth') {
+      const ownedByCurrentUser = 
+        this.props.address &&
+        (this.state.currentSearchName !== this.state.prevSearchName) &&
+        checkCurrentUserOwned(
+          this.props.searchResult.searchName,
+          this.props.address
+        );
+      const step = getStep(
+        this.props.searchResult.state,
+        this.props.searchResult.value,
+        ownedByCurrentUser
       );
-    const step = getStep(
-      this.props.searchResult.state,
-      this.props.searchResult.value,
-      ownedByCurrentUser
-    );
-    return step;
+      return step;
+    } else {
+      return 'StartAuction';
+    }
   }
 
   handleClick() {
@@ -114,7 +118,10 @@ export class SearchResult extends Component {
     return (
       <div className="SearchResult-status-and-action">
         <div className={statusClass}>
-          <p>{this.props.searchResult.state}</p>
+          {this.props.TLD === '.eth' &&
+            <p>{this.props.searchResult.state}</p>}
+          {this.props.TLD !== '.eth' &&
+            <p>Open</p>}
         </div>
         {actionButton}
       </div>
@@ -129,7 +136,7 @@ export class SearchResult extends Component {
         <Paper className="SearchResult-paper">
           <div className="SearchResult-paper-eth">
             {this.props.recommend && <span className="recommend">RECOMMEND</span>}
-            <h2>{this.props.searchResult.searchName}.eth</h2>
+            <h2>{this.props.searchResult.searchName}{this.props.TLD}</h2>
           </div>
           {statusAndAction}
         </Paper>
