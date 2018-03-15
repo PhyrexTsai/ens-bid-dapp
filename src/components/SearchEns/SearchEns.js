@@ -71,7 +71,7 @@ export const SearchEns = (props) => (
     {props.searchResult && <SearchResult {...props} recommend={false} TLD=".etc" />}
     {props.searchResult && <SearchResult {...props} recommend={false} TLD=".qtum" />}
     {props.domainSearch.length > 0 && props.domainSearch.map((data, index) => (
-      <SearchResult searchResult={data} recommend={true} key={`searchResult-${index}`} />
+      <SearchResult searchResult={data} recommend={true} key={`searchResult-${index}`} TLD=".eth" />
     ))}
   </div>
 );
